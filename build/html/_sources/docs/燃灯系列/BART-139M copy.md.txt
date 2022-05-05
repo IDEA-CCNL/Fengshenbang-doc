@@ -1,0 +1,33 @@
+# Randeng-BART-139M
+
+## Randeng-BART-139M model (Chinese)，one model of [Fengshenbang-LM](https://github.com/IDEA-CCNL/Fengshenbang-LM).
+The 139M million parameter Randeng-BART large model, using 180G Chinese data, 8 A100(40G) training for 3 days，which is a standard transformer structure.
+
+
+## Task Description
+
+Randeng-BART-139M is pre-trained by Text-Infilling task from BART [paper](https://readpaper.com/pdf-annotate/note?noteId=675945911766249472&pdfId=550970997159968917)
+
+
+## Usage
+```python
+from transformers import BartForConditionalGeneration, AutoTokenizer, Text2TextGenerationPipeline
+import torch
+
+tokenizer=AutoTokenizer.from_pretrained('IDEA-CCNL/Randeng-BART-139M', use_fast=false)
+model=BartForConditionalGeneration.from_pretrained('IDEA-CCNL/Randeng-BART-139M')
+text = '桂林市是世界闻名<mask> ，它有悠久的<mask>'
+text2text_generator = Text2TextGenerationPipeline(model, tokenizer)
+print(text2text_generator(text, max_length=50, do_sample=False))
+```
+
+## Citation
+If you find the resource is useful, please cite the following website in your paper.
+```
+@misc{Fengshenbang-LM,
+  title={Fengshenbang-LM},
+  author={IDEA-CCNL},
+  year={2022},
+  howpublished={\url{https://github.com/IDEA-CCNL/Fengshenbang-LM}},
+}
+```
