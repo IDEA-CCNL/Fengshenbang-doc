@@ -7,3 +7,4 @@
 
     BART-139M
     BART-139M-SUMMARY
+    Randeng-MegatronT5-770M
