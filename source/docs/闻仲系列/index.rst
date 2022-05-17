@@ -4,4 +4,4 @@
 .. toctree::
     :maxdepth: 1
 
-    Erlangshen-MegatronBert-1.3B
+    Wenzhong-GPT2-3.5B
