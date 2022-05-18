@@ -1,4 +1,4 @@
-# BART-139M-SUMMARY
+# Randeng-BART-139M-SUMMARY
 
 The 139M million parameter Randeng-BART large model, using 180G Chinese data, 8 A100(40G) training for 3 days，which is a standard transformer structure. Finetune on summary downstream task.
 

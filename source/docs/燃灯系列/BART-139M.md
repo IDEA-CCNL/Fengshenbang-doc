@@ -14,7 +14,7 @@ BART模型在原论文中采用了5种Denoise的方式，我们在预训练的�
 
 ## 使用方法
 
-因为transformers下BartTokenizer不支持sentence piece，所以这里借用的是T5Tokenizer，在使用时需要在句首手动添加<s> (bos_token) ^ ^
+因为transformers下BartTokenizer不支持sentence piece，所以这里借用的是T5Tokenizer，在使用时需要在句首手动添加\<s\> (bos_token) ^ ^
 
 ```python
 from transformers import BartForConditionalGeneration, AutoTokenizer, Text2TextGenerationPipeline

@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-封神榜 中文语言与训练模型开源计划
+封神榜 中文语言预训练模型开源计划
 ===========================================
 
 .. toctree::
