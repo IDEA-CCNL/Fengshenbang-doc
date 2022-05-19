@@ -17,11 +17,11 @@ Erlangshen-Roberta-110M-Similarity 是使用文本相似度数据集 fine-tune �
 
 
 ### 测评结果（dev集,BUSTM和AFQMC任务的dev集有些样本可能在训练集出现过）
-|    Model   | BQ    |  BUSTM  | AFQMC    |
-| :--------:    | :-----:  | :----:  | :-----:   | 
-| Erlangshen-Roberta-110M-Similarity | 85.41     |   95.18    | 81.72     |
-| Erlangshen-Roberta-330M-Similarity | 86.21      |   99.29    | 93.89      |  
-| Erlangshen-MegatronBert-1.3B-Similarity | 86.31      |   -    | -      |   
+|                  Model                  |  BQ   | BUSTM | AFQMC |
+| :-------------------------------------: | :---: | :---: | :---: |
+|   Erlangshen-Roberta-110M-Similarity    | 85.41 | 95.18 | 81.72 |
+|   Erlangshen-Roberta-330M-Similarity    | 86.21 | 99.29 | 93.89 |
+| Erlangshen-MegatronBert-1.3B-Similarity | 86.31 |   -   |   -   |
 
 
 ### 使用示例
@@ -42,7 +42,7 @@ print(torch.nn.functional.softmax(output.logits,dim=-1))
 ```
 
 
-## Citation
+### Citation
 如果你觉得我们的模型对你有用，你可以使用下面的引用方式进行引用。
 ```
 @misc{Fengshenbang-LM,

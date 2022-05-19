@@ -44,7 +44,7 @@ print(text2text_generator(text, max_length=50, do_sample=False))
 ['▁act', 'ion', '=', 'xx', 'x', '&', 'a', '=', '2', '▁', '跳', '转', 'a', '";']]
 ```
 
-整个sample的函数可以在TextFillingCollator中找到。
+最终由上述数据转成模型输入的函数可以在TextFillingCollator中找到。
 
 ### 脚本修改
 
@@ -113,7 +113,7 @@ TRAINER_ARGS="\
         "
 ```
 
-## 如果进行下游任务
+## 如何进行下游任务
 
 这里我们提供利用BART做summary任务的示例。[代码脚本](https://github.com/IDEA-CCNL/Fengshenbang-LM/blob/hf-ds/fengshen/examples/summary/bart_summary.py)同样开源了。
 
