@@ -29,9 +29,10 @@ Erlangshen-Roberta-110M-NLI 是使用 NLI（自然语言推理） 数据集 fine
 
 
 ### 测评结果（dev集）
+
+
 |    Model   | cmnli    |  ocnli  | snli    | 
 | :--------:    | :-----:  | :----:  | :-----:   | 
-<br>
 | Erlangshen-Roberta-110M-NLI | 80.83     |   78.56    | 88.01      |
 | Erlangshen-Roberta-330M-NLI | 82.25      |   79.82    | 88      |  
 | Erlangshen-MegatronBert-1.3B-NLI | 84.52      |   84.17    | 88.67      |  

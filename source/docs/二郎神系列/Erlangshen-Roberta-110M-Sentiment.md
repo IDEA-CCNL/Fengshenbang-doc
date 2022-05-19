@@ -30,9 +30,10 @@ Erlangshen-Roberta-110M-Sentiment 是使用情感分类数据集 fine-tune 过�
 
 
 ### 测评结果（dev集）
+
+
 |    Model   | ASAP-SENT    |  ASAP-ASPECT  | ChnSentiCorp    |
 | :--------:    | :-----:  | :----:  | :-----:   | 
-<br>
 | Erlangshen-Roberta-110M-Sentiment | 97.77     |   97.31    | 96.61     |
 | Erlangshen-Roberta-330M-Sentiment | 97.9      |   97.51    | 96.66      |  
 | Erlangshen-MegatronBert-1.3B-Sentiment | 98.1     |   97.8    | 97      |
