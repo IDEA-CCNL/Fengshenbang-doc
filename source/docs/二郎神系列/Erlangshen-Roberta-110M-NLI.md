@@ -1,6 +1,16 @@
 ## Erlangshen-Roberta-110M-NLI
 
-Erlangshen-Roberta-110M-NLI 是使用 NLI（自然语言推理） 数据集 fine-tune 过的模型，可以直接用于 NLI 任务。模型主要基于 [roberta](https://huggingface.co/hfl/chinese-roberta-wwm-ext)，共收集了 4 份共 1014787 条公开的 NLI 样本。
+Erlangshen-Roberta-110M-NLI 是使用 NLI（自然语言推理） 数据集 fine-tune 过的模型，可以直接用于 NLI 任务。110M参数和330M参数的模型主要基于 [roberta](https://huggingface.co/hfl/chinese-roberta-wwm-ext)，1.3B参数的模型主要基于 [MegatronBert-1.3B](https://huggingface.co/IDEA-CCNL/Erlangshen-MegatronBert-1.3B)，共收集了 4 份共 1014787 条公开的 NLI 样本。
+
+### Finetune 样本示例
+```
+{
+  "texta": "身上裹一件工厂发的棉大衣,手插在袖筒里",
+  "textb": "身上至少一件衣服", 
+  "label": 2, 
+  "id": 0
+ }
+```
 
 ### 标签映射
 模型输出0表示两个句子矛盾，1表示没有关系，2表示蕴含关系
@@ -19,8 +29,9 @@ Erlangshen-Roberta-110M-NLI 是使用 NLI（自然语言推理） 数据集 fine
 
 
 ### 测评结果（dev集）
-|    Model   | cmnli    |  ocnli  | snli    |
+|    Model   | cmnli    |  ocnli  | snli    | 
 | :--------:    | :-----:  | :----:  | :-----:   | 
+<br>
 | Erlangshen-Roberta-110M-NLI | 80.83     |   78.56    | 88.01      |
 | Erlangshen-Roberta-330M-NLI | 82.25      |   79.82    | 88      |  
 | Erlangshen-MegatronBert-1.3B-NLI | 84.52      |   84.17    | 88.67      |  
@@ -44,7 +55,7 @@ print(torch.nn.functional.softmax(output.logits,dim=-1))
 ```
 
 
-## Citation
+### Citation
 如果你觉得我们的模型对你有用，你可以使用下面的引用方式进行引用。
 ```
 @misc{Fengshenbang-LM,
