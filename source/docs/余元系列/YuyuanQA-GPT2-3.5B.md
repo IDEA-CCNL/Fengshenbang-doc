@@ -1,4 +1,4 @@
-# <center> yuyuanQA模型finetune
+# yuyuanQA模型finetune
 本示例主要实现了基于GPT2结构的Yuyuan医疗大模型，通过医疗问答对Finetune，使大模型能够有closebook-qa的能力。
 ### 数据和模型
 #### 模型：
