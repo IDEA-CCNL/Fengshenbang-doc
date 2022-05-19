@@ -17,6 +17,7 @@ Erlangshen-Roberta-110M-Similarity 是使用文本相似度数据集 fine-tune �
 
 
 ### 测评结果（dev集,BUSTM和AFQMC任务的dev集有些样本可能在训练集出现过）
+
 |                  Model                  |  BQ   | BUSTM | AFQMC |
 | :-------------------------------------: | :---: | :---: | :---: |
 |   Erlangshen-Roberta-110M-Similarity    | 85.41 | 95.18 | 81.72 |
