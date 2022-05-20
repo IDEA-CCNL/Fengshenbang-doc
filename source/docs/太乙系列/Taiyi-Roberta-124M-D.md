@@ -24,7 +24,7 @@ GLUE和WNLI任务。
 | Roberta-base (local)   | 87.0 | 91.3 | 92.5 | 94.2  | 62.8 | 90.6  | 92.9 | 78.0 | 56.3 |
 | Taiyi (local)          | 87.1 | 91.8 | 92.3 | 94.5  | 62.6 | 90.4  | 92.4 | 78.7 | 56.3 |
 
-local的设置:
+local (本地)的设置:
 
 Sequence length: 128, Batch size: 32, Learning rate: 3e-5
 

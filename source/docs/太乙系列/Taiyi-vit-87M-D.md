@@ -21,7 +21,7 @@ Taiyi (太乙) 系列模型属于 Fengshenbang (封神榜) 大模型开源计划
 | clip-vit-base-patch16-224 (official) |   96.2  |    80.2    |
 | Taiyi-vit-87M-D (local)              |   98.7  |    82.4    |
 
-local的设置:
+local (本地)的设置:
 
 learning_rate=2e-5, 
 batch_size=128, 
