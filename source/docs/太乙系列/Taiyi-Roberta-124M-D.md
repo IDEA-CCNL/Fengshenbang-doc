@@ -1,8 +1,6 @@
-# Taiyi (太乙)
+# Taiyi-Roberta-124M-D
 
 Taiyi (太乙) 系列模型属于 Fengshenbang (封神榜) 大模型开源计划的一个分支。专注于利用多模态信息，使模型具有多模态语义理解能力。
-
-# Taiyi-Roberta-124M-D
 
 此模型与 Taiyi-vit-87M-D，一同构成多模态双流模型的两个特征提取器。
 
