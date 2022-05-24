@@ -1,12 +1,25 @@
 ## Erlangshen-Roberta-110M-Similarity
 
-Erlangshen-Roberta-110M-Similarity 是使用文本相似度数据集 fine-tune 过的模型，可以直接用于文本相似度任务。模型主要基于 [roberta](https://huggingface.co/hfl/chinese-roberta-wwm-ext)，共收集了 20 份共 2773880 条样本。
+Erlangshen-Roberta-110M-Similarity 是使用文本相似度数据集 fine-tune 过的模型，可以直接用于文本相似度任务。110M参数和330M参数的模型主要基于 [roberta](https://huggingface.co/hfl/chinese-roberta-wwm-ext)，1.3B参数的模型主要基于 [MegatronBert-1.3B](https://huggingface.co/IDEA-CCNL/Erlangshen-MegatronBert-1.3B)，共收集了 20 份共 2773880 条样本。
 
+
+### Finetune 样本示例
+```
+{
+  "texta": "可以換其他银行卡吗？", 
+  "textb": "分期的如何用别的银行卡还钱", 
+  "label": 1, 
+  "id": 0
+  }
+```
 
 ### 标签映射
 模型输出0表示不相似，输出1表示相似
 ```
-"id2label":{"0":"not similarity","1":"similarity"}
+"id2label":{
+    "0":"not similarity",
+    "1":"similarity"
+     }
 ```
 
 ### 模型下载
