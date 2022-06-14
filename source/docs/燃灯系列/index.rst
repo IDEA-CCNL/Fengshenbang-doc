@@ -9,3 +9,5 @@
     BART-139M-SUMMARY
     Randeng-MegatronT5-770M
     Randeng-T5-77M
+    Pegasus-523M
+    Randeng-Pegasus-523M-Summary
