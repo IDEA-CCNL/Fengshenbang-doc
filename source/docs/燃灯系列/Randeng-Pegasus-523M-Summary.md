@@ -44,6 +44,7 @@ finetune 使用的是IDEA研究院认知计算小组的开源框架-封神
 ### finetune参数
 
 finetune阶段使用了deepspeed来加速训练
+
 | dataset | Learning rate | Batch size | Beam size |  Max input tokens | Max target tokens |
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | LCSTS | 5e-5 | 128 | 8 | 128 | 64 |
