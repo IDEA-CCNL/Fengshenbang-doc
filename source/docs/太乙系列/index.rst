@@ -6,3 +6,4 @@
 
     Taiyi-vit-87M-D
     Taiyi-Roberta-124M-D
+    TaiYi-CLIP-ViT-B-32
