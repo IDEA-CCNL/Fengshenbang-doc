@@ -8,3 +8,4 @@
     Erlangshen-Roberta-110M-NLI
     Erlangshen-Roberta-110M-Sentiment
     Erlangshen-Roberta-110M-Similarity
+    Erlangshen-Ubert-110M-Chinese
