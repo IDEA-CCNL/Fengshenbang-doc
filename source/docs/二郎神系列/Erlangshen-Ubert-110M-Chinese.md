@@ -7,6 +7,8 @@ Ubert 是我们在做 [2022AIWIN 世界人工智能创新大赛：中文保险�
 
 ## 开源模型列表
  开源的模型是我们在比赛模型的基础上重新整理 70+ 份数据，共 100万+条样本，进行预训练而得到的，可直接开箱即用。开源模型地址如下：
+ 
+ 
 | 模型 | 地址   |
 |:---------:|:--------------:|
 | Erlangshen-Ubert-110M-Chinese  | [https://huggingface.co/IDEA-CCNL/Erlangshen-Ubert-110M-Chinese](https://huggingface.co/IDEA-CCNL/Erlangshen-Ubert-110M-Chinese)       |
