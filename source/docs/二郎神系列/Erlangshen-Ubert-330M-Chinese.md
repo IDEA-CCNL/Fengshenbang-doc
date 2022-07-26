@@ -31,7 +31,7 @@ from fengshen import UbertPiplines
 total_parser = argparse.ArgumentParser("TASK NAME")
 total_parser = UbertPiplines.piplines_args(total_parser)
 args = total_parser.parse_args()
-args.pretrained_model_path = 'IDEA-CCNL/Erlangshen-Ubert-110M-Chinese'  #预训练模型路径
+args.pretrained_model_path = 'IDEA-CCNL/Erlangshen-Ubert-330M-Chinese'  #预训练模型路径
 test_data=[
     {
         "task_type": "抽取任务", 
