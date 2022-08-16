@@ -18,34 +18,36 @@ Taiyi-CLIP-Roberta-102M-Chinese使用[openai/CLIP](https://github.com/openai/CLI
 
 |  model   | dataset  | Top1 | Top5 | Top10 |
 |  ----  | ----  | ---- | ---- | ---- |
-| Taiyi-CLIP-Roberta-102M-Chinese  | COCO-CN | 25.47 % | 51.70%  | 63.07% |
-| Taiyi-CLIP-Roberta-102M-Chinese  | wukong50k | 48.67 % | 81.77% | 90.09% |
+| Taiyi-CLIP-Roberta-102M-Chinese  | Flickr30k-CNA-test | 44.06% | 71.42%  | 80.84% |
+| Taiyi-CLIP-Roberta-102M-Chinese  | COCO-CN-test | 46.24% | 78.06%  | 88.88% |
+| Taiyi-CLIP-Roberta-102M-Chinese  | wukong50k | 48.67% | 81.77% | 90.09% |
 
 
 
-
-## 快速开始
-
+## 使用示例
 ```python3
 from PIL import Image
 import requests
 import clip
 import torch
 from transformers import BertForSequenceClassification, BertConfig, BertTokenizer
+from transformers import CLIPProcessor, CLIPModel
 import numpy as np
 
+query_texts = ["一只猫", "一只狗",'两只猫', '两只老虎','一只老虎']  # 这里是输入文本的，可以随意替换。
 # 加载Taiyi 中文 text encoder
 text_tokenizer = BertTokenizer.from_pretrained("IDEA-CCNL/Taiyi-CLIP-Roberta-102M-Chinese")
 text_encoder = BertForSequenceClassification.from_pretrained("IDEA-CCNL/Taiyi-CLIP-Roberta-102M-Chinese").eval()
-text = text_tokenizer(["一只猫", "一只狗",'两只猫', '两只老虎','一只老虎'], return_tensors='pt', padding=True)['input_ids']
+text = text_tokenizer(query_texts, return_tensors='pt', padding=True)['input_ids']
 
+url = "http://images.cocodataset.org/val2017/000000039769.jpg"  # 这里可以换成任意图片的url
 # 加载CLIP的image encoder
-url = "http://images.cocodataset.org/val2017/000000039769.jpg"
-clip_model, preprocess = clip.load("ViT-B/32", device='cpu')
-image = preprocess(Image.open(requests.get(url, stream=True).raw)).unsqueeze(0)
+clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")  
+processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
+image = processor(images=Image.open(requests.get(url, stream=True).raw), return_tensors="pt")
 
 with torch.no_grad():
-    image_features = clip_model.encode_image(image)
+    image_features = clip_model.get_image_features(**image)
     text_features = text_encoder(text).logits
     # 归一化
     image_features = image_features / image_features.norm(dim=1, keepdim=True)
@@ -56,8 +58,16 @@ with torch.no_grad():
     logits_per_text = logits_per_image.t()
     probs = logits_per_image.softmax(dim=-1).cpu().numpy()
     print(np.around(probs, 3))
+
 ```
 
+## 下游Finetune
+我们提供了CLIP在Flickr30k-CNA这个数据集上的finetune代码示例，另外我们也提供了召回率计算的代码，都集成在LightningModule里了。
+
+具体见:https://github.com/IDEA-CCNL/Fengshenbang-LM/tree/main/fengshen/examples/clip_finetune
+
+配置好相关环境后，执行
+`sh finetune_flickr.sh`即可。
 
 
 ## Citation
