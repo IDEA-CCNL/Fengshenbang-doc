@@ -1,4 +1,4 @@
-# Ubert: 统一 NLU 任务新范式
+# Erlangshen-Ubert-110M-Chinese
 - 论文：[https://arxiv.org/pdf/2206.12094.pdf](https://arxiv.org/pdf/2206.12094.pdf)
 - 知乎：[https://zhuanlan.zhihu.com/p/539958182?](https://zhuanlan.zhihu.com/p/539958182?)
 
