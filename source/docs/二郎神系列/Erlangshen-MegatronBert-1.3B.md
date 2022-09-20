@@ -39,7 +39,7 @@ We follow [Megatron-LM](https://github.com/NVIDIA/Megatron-LM), using 32 A100s a
 ![image](https://user-images.githubusercontent.com/4384420/151319156-e20ba252-b531-4779-8099-ef60c7954f76.png)
 
 
-## 下游效果
+### 下游效果
 
 |     模型   | afqmc    |  tnews  | iflytek    |  ocnli  |  cmnli  | wsc  | csl  |
 | :--------:    | :-----:  | :----:  | :-----:   | :----: | :----: | :----: | :----: |
