@@ -10,7 +10,7 @@ Erlangshen topped FewCLUE and ZeroCLUE benchmark in 2021, designed to slove NLU 
 
 ## 模型分类 Model Taxonomy
 |  需求 Demand  | 任务 Task       | 系列 Series      | 模型 Model    | 参数 Parameter | 额外 Extra |
-|  ----  | ----  | ----  | ----  | ----  | ----  |
+|  :----:  | :----:  | :----:  | :----:  | :----:  | :----:  |
 | 通用 General  | 自然语言理解 NLU | 二郎神 Erlangshen | MegatronBert |      1.3B      |     -     |
 
 ## 模型信息 Model Information
@@ -21,7 +21,7 @@ A bidirectional language model based on the Encoder structure, focusing on solvi
 We follow [Megatron-LM](https://github.com/NVIDIA/Megatron-LM), using 32 A100s and spending 14 days training a billion-level BERT on WuDao Corpora (180 GB version). Given Chinese grammar and the difficulty of large-scale training, we use four pre-training procedures to improve BERT: 1) Whole Word Masking (WWM), 2) Knowledge-based Dynamic Masking (KDM), 3) Sentence Order Prediction (SOP), 4) Pre-layer Normalization (Pre-LN).
 
 
-## 成就 Achievement
+### 成就 Achievement
 1.2021年11月10日，二郎神在FewCLUE上取得第一。其中，它在CHIDF(成语填空)和TNEWS(新闻分类)子任务中的表现优于人类表现。此外，它在CHIDF(成语填空), CSLDCP(学科文献分类), OCNLI(自然语言推理)任务中均名列前茅。  
 2.2022年1月24日，二郎神在CLUE基准测试中的ZeroCLUE中取得第一。具体到子任务，我们在CSLDCP(主题文献分类), TNEWS(新闻分类), IFLYTEK(应用描述分类), CSL(抽象关键字识别)和CLUEWSC(参考消歧)任务中取得第一。  
 3.在2022年7月10日，我们在CLUE基准的语义匹配任务中取得第一。
@@ -39,7 +39,7 @@ We follow [Megatron-LM](https://github.com/NVIDIA/Megatron-LM), using 32 A100s a
 ![image](https://user-images.githubusercontent.com/4384420/151319156-e20ba252-b531-4779-8099-ef60c7954f76.png)
 
 
-## 下游效果
+### 下游效果
 
 |     模型   | afqmc    |  tnews  | iflytek    |  ocnli  |  cmnli  | wsc  | csl  |
 | :--------:    | :-----:  | :----:  | :-----:   | :----: | :----: | :----: | :----: |
