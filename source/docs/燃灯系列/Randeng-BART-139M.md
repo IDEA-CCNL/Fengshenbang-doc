@@ -1,18 +1,39 @@
 # Randeng-BART-139M
 
-燃灯BART系列模型基于transformers标准的Encoder-Decoder结构，在理解、生成任务上都有较好的表现。
-模型数据集使用180G的海量中文语料，使用8张A100(40G)训练56h，作为燃灯BART系列第一个模型，在后续也会有更大规模的BART系列模型开源。
+- Github: [Fengshenbang-LM](https://github.com/IDEA-CCNL/Fengshenbang-LM)
+- Docs: [Fengshenbang-Docs](https://fengshenbang-doc.readthedocs.io/)
 
+## 简介 Brief Introduction
 
-## 任务描述
+善于处理NLT任务，中文版的BART-base。
+
+Good at solving NLT tasks, Chinese BART-base.
+
+## 模型分类 Model Taxonomy
+
+|  需求 Demand  | 任务 Task       | 系列 Series      | 模型 Model    | 参数 Parameter | 额外 Extra |
+|  :----:  | :----:  | :----:  | :----:  | :----:  | :----:  |
+| 通用 General | 自然语言转换 NLT | 燃灯 Randeng | BART |      139M      |     中文-Chinese    |
+
+## 模型信息 Model Information
+
+参考论文：[BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension](https://arxiv.org/pdf/1910.13461.pdf)
+
+为了得到一个中文版的BART-base，我们用悟道语料库(180G版本)进行预训练。具体地，我们在预训练阶段中使用了[封神框架](https://github.com/IDEA-CCNL/Fengshenbang-LM/tree/main/fengshen)大概花费了8张A100约3天。
+
+To get a Chinese BART-base, we use WuDao Corpora (180 GB version) for pre-training. Specifically, we use the [fengshen framework](https://github.com/IDEA-CCNL/Fengshenbang-LM/tree/main/fengshen) in the pre-training phase which cost about 3 days with 8 A100 GPUs.
+
+### 更多信息 More Information
 
 BART模型在原论文中采用了5种Denoise的方式，我们在预训练的时候采用论文中效果比较好的text infilling的方式。同时在原论文的基础上，我们使用sentence piece tokenizer，使得模型具备更长文本的生成能力。
 
+## 使用 Usage
 
-## 模型下载地址
-[Huggingface 燃灯-BART-139M](https://huggingface.co/IDEA-CCNL/Randeng-BART-139M)
+### 模型下载地址 Download Address
 
-## 使用方法
+[Huggingface地址：Randeng-BART-139M](https://huggingface.co/IDEA-CCNL/Randeng-BART-139M)
+
+### 加载模型 Loading Models
 
 因为transformers下BartTokenizer不支持sentence piece，所以这里借用的是T5Tokenizer，在使用时需要在句首手动添加\<s\> (bos_token) ^ ^
 
@@ -119,13 +140,31 @@ TRAINER_ARGS="\
 
 在脚本中仅需要修改一下LSCTC数据的地址即可。
 
-## Citation
-If you find the resource is useful, please cite the following website in your paper.
+## 引用 Citation
+
+如果您在您的工作中使用了我们的模型，可以引用我们的[论文](https://arxiv.org/abs/2209.02970)：
+
+If you are using the resource for your work, please cite the our [paper](https://arxiv.org/abs/2209.02970):
+
+```text
+@article{fengshenbang,
+  author    = {Junjie Wang and Yuxiang Zhang and Lin Zhang and Ping Yang and Xinyu Gao and Ziwei Wu and Xiaoqun Dong and Junqing He and Jianheng Zhuo and Qi Yang and Yongfeng Huang and Xiayu Li and Yanghan Wu and Junyu Lu and Xinyu Zhu and Weifeng Chen and Ting Han and Kunhao Pan and Rui Wang and Hao Wang and Xiaojun Wu and Zhongshen Zeng and Chongpei Chen and Ruyi Gan and Jiaxing Zhang},
+  title     = {Fengshenbang 1.0: Being the Foundation of Chinese Cognitive Intelligence},
+  journal   = {CoRR},
+  volume    = {abs/2209.02970},
+  year      = {2022}
+}
 ```
+
+也可以引用我们的[网站](https://github.com/IDEA-CCNL/Fengshenbang-LM/):
+
+You can also cite our [website](https://github.com/IDEA-CCNL/Fengshenbang-LM/):
+
+```text
 @misc{Fengshenbang-LM,
   title={Fengshenbang-LM},
   author={IDEA-CCNL},
-  year={2022},
+  year={2021},
   howpublished={\url{https://github.com/IDEA-CCNL/Fengshenbang-LM}},
 }
 ```

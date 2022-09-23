@@ -5,7 +5,7 @@
 
 ## 简介 Brief Introduction
 
-2021登顶FewCLUE和ZeroCLUE，处理NLU任务，开源时最大的中文BERT模型
+2021登顶FewCLUE和ZeroCLUE，处理NLU任务，开源时最大的中文BERT模型。
 
 Erlangshen topped FewCLUE and ZeroCLUE benchmark in 2021, designed to slove NLU tasks, is the largest BERT when publicly released.
 
@@ -13,9 +13,10 @@ Erlangshen topped FewCLUE and ZeroCLUE benchmark in 2021, designed to slove NLU 
 
 |  需求 Demand  | 任务 Task       | 系列 Series      | 模型 Model    | 参数 Parameter | 额外 Extra |
 |  :----:  | :----:  | :----:  | :----:  | :----:  | :----:  |
-| 通用 General  | 自然语言理解 NLU | 二郎神 Erlangshen | MegatronBert |      1.3B      |     -     |
+| 通用 General  | 自然语言理解 NLU | 二郎神 Erlangshen | MegatronBert |      1.3B      |     中文 Chinese     |
 
 ## 模型信息 Model Information
+
 Encoder结构为主的双向语言模型，专注于解决各种自然语言理解任务。
 我们跟进了[Megatron-LM](https://github.com/NVIDIA/Megatron-LM)的工作，使用了32张A100，总共耗时14天在悟道语料库（180 GB版本）上训练了十亿级别参数量的BERT。同时，鉴于中文语法和大规模训练的难度，我们使用四种预训练策略来改进BERT：1) 整词掩码, 2) 知识动态遮掩, 3) 句子顺序预测, 4) 层前归一化.
 
@@ -23,7 +24,8 @@ A bidirectional language model based on the Encoder structure, focusing on solvi
 We follow [Megatron-LM](https://github.com/NVIDIA/Megatron-LM), using 32 A100s and spending 14 days training a billion-level BERT on WuDao Corpora (180 GB version). Given Chinese grammar and the difficulty of large-scale training, we use four pre-training procedures to improve BERT: 1) Whole Word Masking (WWM), 2) Knowledge-based Dynamic Masking (KDM), 3) Sentence Order Prediction (SOP), 4) Pre-layer Normalization (Pre-LN).
 
 
-## 成就 Achievement
+## 成就 Achievements
+
 1.2021年11月10日，二郎神在FewCLUE上取得第一。其中，它在CHIDF(成语填空)和TNEWS(新闻分类)子任务中的表现优于人类表现。此外，它在CHIDF(成语填空), CSLDCP(学科文献分类), OCNLI(自然语言推理)任务中均名列前茅。  
 2.2022年1月24日，二郎神在CLUE基准测试中的ZeroCLUE中取得第一。具体到子任务，我们在CSLDCP(主题文献分类), TNEWS(新闻分类), IFLYTEK(应用描述分类), CSL(抽象关键字识别)和CLUEWSC(参考消歧)任务中取得第一。  
 3.在2022年7月10日，我们在CLUE基准的语义匹配任务中取得第一。
@@ -51,10 +53,11 @@ We follow [Megatron-LM](https://github.com/NVIDIA/Megatron-LM), using 32 A100s a
 
 ## 使用 Usage
 
-### 模型下载地址
-[Huggingface 二郎神-1.3B](https://huggingface.co/IDEA-CCNL/Erlangshen-MegatronBert-1.3B)
+### 模型下载地址 Download Address
 
-### 模型加载
+[Huggingface地址：Erlangshen-MegatronBert-1.3B](https://huggingface.co/IDEA-CCNL/Erlangshen-MegatronBert-1.3B)
+
+### 加载模型 Loading Models
 
 ``` python
 from transformers import MegatronBertConfig, MegatronBertModel
@@ -65,7 +68,7 @@ config = MegatronBertConfig.from_pretrained("IDEA-CCNL/Erlangshen-MegatronBert-1
 model = MegatronBertModel.from_pretrained("IDEA-CCNL/Erlangshen-MegatronBert-1.3B")
 ```
 
-### 使用示例
+### 使用示例 Usage Examples
 
 为了便于开发者快速使用我们的开源模型，这里提供了一个下游任务的[finetune示例脚本](https://github.com/IDEA-CCNL/Fengshenbang-LM/blob/main/fengshen/scripts/finetune_classification.sh)，使用的[CLUE](https://github.com/CLUEbenchmark/CLUE)上的tnews新闻分类任务数据，运行脚本如下。其中DATA_PATH为数据路径，tnews任务数据的[下载地址](https://github.com/CLUEbenchmark/CLUE).
 
@@ -80,7 +83,6 @@ PRETRAINED_MODEL_PATH=IDEA-CCNL/Erlangshen-MegatronBert-1.3B
 ``` sh
 sh finetune_classification.sh
 ```
-
 
 ## 引用 Citation
 
