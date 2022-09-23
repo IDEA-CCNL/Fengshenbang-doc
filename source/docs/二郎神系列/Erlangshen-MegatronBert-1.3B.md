@@ -4,13 +4,15 @@
 - Docs: [Fengshenbang-Docs](https://fengshenbang-doc.readthedocs.io/)
 
 ## 简介 Brief Introduction
+
 2021登顶FewCLUE和ZeroCLUE，处理NLU任务，开源时最大的中文BERT模型
 
 Erlangshen topped FewCLUE and ZeroCLUE benchmark in 2021, designed to slove NLU tasks, is the largest BERT when publicly released.
 
 ## 模型分类 Model Taxonomy
+
 |  需求 Demand  | 任务 Task       | 系列 Series      | 模型 Model    | 参数 Parameter | 额外 Extra |
-|  ----  | ----  | ----  | ----  | ----  | ----  |
+|  :----:  | :----:  | :----:  | :----:  | :----:  | :----:  |
 | 通用 General  | 自然语言理解 NLU | 二郎神 Erlangshen | MegatronBert |      1.3B      |     -     |
 
 ## 模型信息 Model Information
