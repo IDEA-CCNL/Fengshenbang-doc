@@ -1,51 +1,62 @@
-# Yuyuan-GPT2-3.5B
+# Wenzhong-GPT2-110M
 
 - Github: [Fengshenbang-LM](https://github.com/IDEA-CCNL/Fengshenbang-LM)
 - Docs: [Fengshenbang-Docs](https://fengshenbang-doc.readthedocs.io/)
 
 ## 简介 Brief Introduction
 
-目前最大的，医疗领域的生成语言模型GPT2。
+善于处理NLG任务，中文版的GPT2-Small。
 
-The currently largest, generative language model GPT2 in the medical domain.
+Focused on handling NLG tasks, Chinese GPT2-Small.
 
 ## 模型分类 Model Taxonomy
 
 |  需求 Demand  | 任务 Task       | 系列 Series      | 模型 Model    | 参数 Parameter | 额外 Extra |
 |  :----:  | :----:  | :----:  | :----:  | :----:  | :----:  |
-| 特殊 Special | 领域 Domain | 余元 Yuyuan | GPT2 |      3.5B      |     -     |
+| 通用 General  | 自然语言生成 NLG | 闻仲 Wenzhong | GPT2 |      110M      |     中文 Chinese     |
 
 ## 模型信息 Model Information
 
-我们采用与Wenzhong-GPT2-3.5B相同的架构，在50GB的医学(PubMed)语料库上进行预训练。我们使用了32个NVIDIA A100显卡大约7天。我们的Yuyuan-GPT2-3.5B是医疗领域最大的开源的GPT2模型。进一步地，模型可以通过计算困惑度（PPL）来判断事实。为了完成问答功能，我们将短语模式从疑问的形式转换为了陈述句。
+类似于Wenzhong2.0-GPT2-3.5B-chinese，我们实现了一个small版本的12层的Wenzhong-GPT2-110M，并且在悟道（300G版本）上面进行预训练。
 
-We adopt the same architecture as Wenzhong-GPT2-3.5B to be pre-trained on 50 GB medical (PubMed) corpus. We use 32 NVIDIA A100 GPUs for about 7 days. Our Yuyuan-GPT2-3.5B is the largest open-source GPT2 model in the medical domain. We further allow the model to judge facts by computing perplexity (PPL). To accomplish question-and-answer functionality, we transform the phrase pattern from interrogative to declarative.
+Similar to Wenzhong2.0-GPT2-3.5B-chinese, we implement a small size Wenzhong-GPT2-110M with 12 layers, which is pre-trained on Wudao Corpus (300G version).
 
 ## 使用 Usage
 
 ### 模型下载地址 Download Address
 
-[Huggingface地址：Yuyuan-GPT2-3.5B](https://huggingface.co/IDEA-CCNL/Yuyuan-GPT2-3.5B)
+[Huggingface地址：Wenzhong-GPT2-110M](https://huggingface.co/IDEA-CCNL/Wenzhong-GPT2-110M)
 
 ### 加载模型 Loading Models
 
 ```python 
-from transformers import GPT2Tokenizer, GPT2Model
-tokenizer = GPT2Tokenizer.from_pretrained('IDEA-CCNL/Yuyuan-GPT2-3.5B')
-model = GPT2Model.from_pretrained('IDEA-CCNL/Yuyuan-GPT2-3.5B')
-text = "Replace me by any text you'd like."
-encoded_input = tokenizer(text, return_tensors='pt')
-output = model(**encoded_input)
+from transformers import GPT2Tokenizer,GPT2LMHeadModel
+hf_model_path = 'IDEA-CCNL/Wenzhong-GPT2-110M'
+tokenizer = GPT2Tokenizer.from_pretrained(hf_model_path)
+model = GPT2LMHeadModel.from_pretrained(hf_model_path)
 ```
 
 ### 使用示例 Usage Examples
 
 ```python
-from transformers import pipeline, set_seed
-set_seed(55)
-generator = pipeline('text-generation', model='IDEA-CCNL/Yuyuan-GPT2-3.5B')
-generator("Diabetics should not eat", max_length=30, num_return_sequences=1)
+question = "北京是中国的"
+inputs = tokenizer(question,return_tensors='pt')
+generation_output = model.generate(**inputs,
+                                return_dict_in_generate=True,
+                                output_scores=True,
+                                max_length=150,
+                                # max_new_tokens=80,
+                                do_sample=True,
+                                top_p = 0.6,
+                                # num_beams=5,
+                                eos_token_id=50256,
+                                pad_token_id=0,
+                                num_return_sequences = 5)
 
+for idx,sentence in enumerate(generation_output.sequences):
+    print('next sentence %d:\n'%idx,
+    tokenizer.decode(sentence).split('<|endoftext|>')[0])
+    print('*'*40)
 ```
 
 ## 引用 Citation

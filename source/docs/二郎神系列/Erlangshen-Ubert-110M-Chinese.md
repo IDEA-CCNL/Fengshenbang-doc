@@ -1,22 +1,45 @@
 # Erlangshen-Ubert-110M-Chinese
-- 论文：[https://arxiv.org/pdf/2206.12094.pdf](https://arxiv.org/pdf/2206.12094.pdf)
-- 知乎：[https://zhuanlan.zhihu.com/p/539958182?](https://zhuanlan.zhihu.com/p/539958182?)
 
-### 简介
-Ubert 是我们在做 [2022AIWIN 世界人工智能创新大赛：中文保险小样本多任务](http://ailab.aiwin.org.cn/competitions/68#results) 时提出的一种解决方案。并取得A/B榜榜首的成绩，且B榜综合成绩领先第二名超过 1 个百分点，领先第三名接近 5 个百分点。相比于官方提供的 baseline，提高 20 个百分点。Ubert 不仅可以完成 实体识别、事件抽取等常见抽取任务，还可以完成新闻分类、自然语言推理等分类任务，且所有任务是共享一个统一框架、统一任务、统一训练目标的模型。解题思路和方案可以参考我们的答辩PPT，或者参考我们的[知乎文章](https://zhuanlan.zhihu.com/p/539958182?)
+- Github: [Fengshenbang-LM](https://github.com/IDEA-CCNL/Fengshenbang-LM)
+- Docs: [Fengshenbang-Docs](https://fengshenbang-doc.readthedocs.io/)
 
-## 开源模型列表
- 开源的模型是我们在比赛模型的基础上重新整理 70+ 份数据，共 100万+条样本，进行预训练而得到的，可直接开箱即用。开源模型地址如下：
- 
- 
+## 简介 Brief Introduction
+
+采用统一的框架处理多种抽取任务，AIWIN2022的冠军方案，1.1亿参数量的中文UBERT-Base。
+
+Adopting a unified framework to handle multiple information extraction tasks, AIWIN2022's champion solution, Chinese UBERT-Base (110M).
+
+## 模型分类 Model Taxonomy
+
+|  需求 Demand  | 任务 Task       | 系列 Series      | 模型 Model    | 参数 Parameter | 额外 Extra |
+|  :----:  | :----:  | :----:  | :----:  | :----:  | :----:  |
+| 通用 General | 自然语言理解 NLU | 二郎神 Erlangshen | UBERT |      110M      |    中文 Chinese    |
+
+## 模型信息 Model Information
+
+参考论文：[Unified BERT for Few-shot Natural Language Understanding](https://arxiv.org/abs/2206.12094)
+
+UBERT是[2022年AIWIN世界人工智能创新大赛：中文保险小样本多任务竞赛](http://ailab.aiwin.org.cn/competitions/68#results)的冠军解决方案。我们开发了一个基于类似BERT的骨干的多任务、多目标、统一的抽取任务框架。我们的UBERT在比赛A榜和B榜上均取得了第一名。因为比赛中的数据集在比赛结束后不再可用，我们开源的UBERT从多个任务中收集了70多个数据集（共1,065,069个样本）来进行预训练，并且我们选择了[MacBERT-Base](https://huggingface.co/hfl/chinese-macbert-base)作为骨干网络。除了支持开箱即用之外，我们的UBERT还可以用于各种场景，如NLI、实体识别和阅读理解。示例代码可以在[Github](https://github.com/IDEA-CCNL/Fengshenbang-LM/tree/dev/yangping/fengshen/examples/ubert)中找到。
+
+UBERT was the winner solution in the [2022 AIWIN ARTIFICIAL INTELLIGENCE WORLD INNOVATIONS: Chinese Insurance Small Sample Multi-Task](http://ailab.aiwin.org.cn/competitions/68#results). We developed a unified framework based on BERT-like backbone for multiple tasks and objectives. Our UBERT owns first place, as described in leaderboards A and B. In addition to the unavailable datasets in the challenge, we carefully collect over 70 datasets (1,065,069 samples in total) from a variety of tasks for open-source UBERT. Moreover, we apply [MacBERT-Base](https://huggingface.co/hfl/chinese-macbert-base) as the backbone. Besides out-of-the-box functionality, our UBERT can be employed in various scenarios such as NLI, entity recognition, and reading comprehension. The example codes can be found in [Github](https://github.com/IDEA-CCNL/Fengshenbang-LM/tree/dev/yangping/fengshen/examples/ubert).
+
+
+- 论文：[Unified BERT for Few-shot Natural Language Understanding](https://arxiv.org/pdf/2206.12094.pdf)
+- 知乎：[AIWIN大赛冠军，IDEA研究院封神榜提出多任务学习方案Ubert](https://zhuanlan.zhihu.com/p/539958182?)
+
+## 使用 Usage
+
+### 模型下载地址 Download Address
+
 | 模型 | 地址   |
 |:---------:|:--------------:|
 | Erlangshen-Ubert-110M-Chinese  | [https://huggingface.co/IDEA-CCNL/Erlangshen-Ubert-110M-Chinese](https://huggingface.co/IDEA-CCNL/Erlangshen-Ubert-110M-Chinese)       |
 | Erlangshen-Ubert-330M-Chinese  | [https://huggingface.co/IDEA-CCNL/Erlangshen-Ubert-330M-Chinese](https://huggingface.co/IDEA-CCNL/Erlangshen-Ubert-330M-Chinese)   |
 
+### 加载模型 Loading Models
 
-## 快速开箱使用
 安装我们的 fengshen 框架，我们暂且提供如下方式安装
+
 ```python
 git clone https://github.com/IDEA-CCNL/Fengshenbang-LM.git
 cd Fengshenbang-LM
@@ -50,7 +73,7 @@ for line in result:
     print(line)
 ```
 
-## 继续 finetune 使用
+### Finetune 使用
 
 开源的模型我们已经经过大量的数据进行预训练而得到，可以直接进行 Zero-Shot，如果你还想继续finetune,可以参考我们的 [example.py](https://github.com/IDEA-CCNL/Fengshenbang-LM/blob/main/fengshen/examples/ubert/example.py)。你只需要将我们数据预处理成为我们定义的格式，即可使用简单的几行代码完成模型的训练和推理。我们是复用 pytorch-lightning 的 trainer 。在训练时，可以直接传入 trainer 的参数，此外我们还定义了一些其他参数。常用的参数如下：
 
@@ -74,7 +97,7 @@ for line in result:
 --num_labels                  #训练每条样本最多取多少个label，超过则进行随机采样负样本， 默认 10
 ```
 
-## 数据预处理示例
+### 数据预处理示例
 
 整个模型的 Piplines 我们已经写好，所以为了方便，我们定义了数据格式。目前我们在预训练中主要含有一下几种任务类型
 
@@ -280,3 +303,49 @@ for line in result:
 }
 ```
 
+## 引用 Citation
+
+如果您在您的工作中使用了我们的模型，可以引用我们的对该模型的论文：
+
+If you are using the resource for your work, please cite the our paper for this model:
+
+```text
+@article{fengshenbang/ubert,
+  author    = {JunYu Lu and
+               Ping Yang and
+               Jiaxing Zhang and
+               Ruyi Gan and
+               Jing Yang},
+  title     = {Unified {BERT} for Few-shot Natural Language Understanding},
+  journal   = {CoRR},
+  volume    = {abs/2206.12094},
+  year      = {2022}
+}
+```
+
+如果您在您的工作中使用了我们的模型，也可以引用我们的[总论文](https://arxiv.org/abs/2209.02970)：
+
+If you are using the resource for your work, please cite the our [overview paper](https://arxiv.org/abs/2209.02970):
+
+```text
+@article{fengshenbang,
+  author    = {Junjie Wang and Yuxiang Zhang and Lin Zhang and Ping Yang and Xinyu Gao and Ziwei Wu and Xiaoqun Dong and Junqing He and Jianheng Zhuo and Qi Yang and Yongfeng Huang and Xiayu Li and Yanghan Wu and Junyu Lu and Xinyu Zhu and Weifeng Chen and Ting Han and Kunhao Pan and Rui Wang and Hao Wang and Xiaojun Wu and Zhongshen Zeng and Chongpei Chen and Ruyi Gan and Jiaxing Zhang},
+  title     = {Fengshenbang 1.0: Being the Foundation of Chinese Cognitive Intelligence},
+  journal   = {CoRR},
+  volume    = {abs/2209.02970},
+  year      = {2022}
+}
+```
+
+也可以引用我们的[网站](https://github.com/IDEA-CCNL/Fengshenbang-LM/):
+
+You can also cite our [website](https://github.com/IDEA-CCNL/Fengshenbang-LM/):
+
+```text
+@misc{Fengshenbang-LM,
+  title={Fengshenbang-LM},
+  author={IDEA-CCNL},
+  year={2021},
+  howpublished={\url{https://github.com/IDEA-CCNL/Fengshenbang-LM}},
+}
+```

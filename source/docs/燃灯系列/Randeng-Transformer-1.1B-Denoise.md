@@ -1,51 +1,54 @@
-# Yuyuan-GPT2-3.5B
+# Randeng-Transformer-1.1B-Denoise
 
 - Github: [Fengshenbang-LM](https://github.com/IDEA-CCNL/Fengshenbang-LM)
 - Docs: [Fengshenbang-Docs](https://fengshenbang-doc.readthedocs.io/)
 
 ## 简介 Brief Introduction
 
-目前最大的，医疗领域的生成语言模型GPT2。
+以去噪任务为微调目标的中文Transformer-XL。
 
-The currently largest, generative language model GPT2 in the medical domain.
+Chinese Transformer-XL with a denoising task as the fine-tuning objective.
 
 ## 模型分类 Model Taxonomy
 
 |  需求 Demand  | 任务 Task       | 系列 Series      | 模型 Model    | 参数 Parameter | 额外 Extra |
 |  :----:  | :----:  | :----:  | :----:  | :----:  | :----:  |
-| 特殊 Special | 领域 Domain | 余元 Yuyuan | GPT2 |      3.5B      |     -     |
+| 通用 General | 自然语言转换 NLT | 燃灯 Randeng | Transformer |      1.1B      |     中文-去噪 Chinese-Denoise    |
 
 ## 模型信息 Model Information
 
-我们采用与Wenzhong-GPT2-3.5B相同的架构，在50GB的医学(PubMed)语料库上进行预训练。我们使用了32个NVIDIA A100显卡大约7天。我们的Yuyuan-GPT2-3.5B是医疗领域最大的开源的GPT2模型。进一步地，模型可以通过计算困惑度（PPL）来判断事实。为了完成问答功能，我们将短语模式从疑问的形式转换为了陈述句。
+我们先使用Transformer-XL的模型结构在悟道语料库(180G版本)上进行预训练，然后在我们自主构建的去噪数据集上进行微调。其中，去噪任务是从包括 **随机插入/交换/删除/替换/句子重排** 的具有噪声的输入中重建一个流畅和干净的文本。
 
-We adopt the same architecture as Wenzhong-GPT2-3.5B to be pre-trained on 50 GB medical (PubMed) corpus. We use 32 NVIDIA A100 GPUs for about 7 days. Our Yuyuan-GPT2-3.5B is the largest open-source GPT2 model in the medical domain. We further allow the model to judge facts by computing perplexity (PPL). To accomplish question-and-answer functionality, we transform the phrase pattern from interrogative to declarative.
+We first pre-trained Transformer-XL on the Wudo corpus (180G version), and then fine-tuned it on a denoised dataset (developed by us). The denoise task is to reconstruct a fluent and clean text from a noisy input which includes **random insertion/swap/deletion/replacement/sentence reordering**.
 
 ## 使用 Usage
 
 ### 模型下载地址 Download Address
 
-[Huggingface地址：Yuyuan-GPT2-3.5B](https://huggingface.co/IDEA-CCNL/Yuyuan-GPT2-3.5B)
+[Huggingface地址：Randeng-Transformer-1.1B-Denoise](Randeng-Transformer-1.1B-Denoise)
 
 ### 加载模型 Loading Models
 
+ ```shell
+ git clone https://github.com/IDEA-CCNL/Fengshenbang-LM.git
+ ```
+
 ```python 
-from transformers import GPT2Tokenizer, GPT2Model
-tokenizer = GPT2Tokenizer.from_pretrained('IDEA-CCNL/Yuyuan-GPT2-3.5B')
-model = GPT2Model.from_pretrained('IDEA-CCNL/Yuyuan-GPT2-3.5B')
-text = "Replace me by any text you'd like."
-encoded_input = tokenizer(text, return_tensors='pt')
-output = model(**encoded_input)
+from fengshen.models.transfo_xl_denoise.tokenization_transfo_xl_denoise import TransfoXLDenoiseTokenizer
+from fengshen.models.transfo_xl_denoise.modeling_transfo_xl_denoise import TransfoXLDenoiseModel
+
+tokenizer = TransfoXLDenoiseTokenizer.from_pretrained('IDEA-CCNL/Randeng-Transformer-1.1B-Denoise')
+model = TransfoXLDenoiseModel.from_pretrained('IDEA-CCNL/Randeng-Transformer-1.1B-Denoise')
 ```
 
 ### 使用示例 Usage Examples
 
-```python
-from transformers import pipeline, set_seed
-set_seed(55)
-generator = pipeline('text-generation', model='IDEA-CCNL/Yuyuan-GPT2-3.5B')
-generator("Diabetics should not eat", max_length=30, num_return_sequences=1)
-
+```python 
+from fengshen.models.transfo_xl_denoise.generate import denoise_generate
+input_text = "凡是有成就的人, 都很严肃地对待生命自己的"
+res = denoise_generate(model, tokenizer,  input_text)
+print(res)
+# "有成就的人都很严肃地对待自己的生命。"
 ```
 
 ## 引用 Citation
