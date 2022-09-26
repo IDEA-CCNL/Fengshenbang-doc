@@ -23,7 +23,6 @@ Encoder结构为主的双向语言模型，专注于解决各种自然语言理�
 A bidirectional language model based on the Encoder structure, focusing on solving various NLU tasks.
 We follow [Megatron-LM](https://github.com/NVIDIA/Megatron-LM), using 32 A100s and spending 14 days training a billion-level BERT on WuDao Corpora (180 GB version). Given Chinese grammar and the difficulty of large-scale training, we use four pre-training procedures to improve BERT: 1) Whole Word Masking (WWM), 2) Knowledge-based Dynamic Masking (KDM), 3) Sentence Order Prediction (SOP), 4) Pre-layer Normalization (Pre-LN).
 
-
 ## 成就 Achievements
 
 1.2021年11月10日，二郎神在FewCLUE上取得第一。其中，它在CHIDF(成语填空)和TNEWS(新闻分类)子任务中的表现优于人类表现。此外，它在CHIDF(成语填空), CSLDCP(学科文献分类), OCNLI(自然语言推理)任务中均名列前茅。  
@@ -42,14 +41,12 @@ We follow [Megatron-LM](https://github.com/NVIDIA/Megatron-LM), using 32 A100s a
 
 ![image](https://user-images.githubusercontent.com/4384420/151319156-e20ba252-b531-4779-8099-ef60c7954f76.png)
 
-
 ## 下游效果
 
 |     模型   | afqmc    |  tnews  | iflytek    |  ocnli  |  cmnli  | wsc  | csl  |
 | :--------:    | :-----:  | :----:  | :-----:   | :----: | :----: | :----: | :----: |
 | roberta-wwm-ext-large | 0.7514      |   0.5872    | 0.6152      |   0.777    | 0.814    | 0.8914    | 0.86    |
 | Erlangshen-MegatronBert-1.3B | 0.7608      |   0.5996    | 0.6234      |   0.7917    | 0.81    | 0.9243    | 0.872    |
-
 
 ## 使用 Usage
 
