@@ -1,19 +1,3 @@
----
-license: apache-2.0
-language: zh
-
-tags:
-- T5
-- chinese
-- sentencepiece
-
-inference: true
-
-widget:
-- text: "北京有悠久的 <extra_id_0>和 <extra_id_1>。"
-- type: "text-generation"
-
----
 # Randeng-T5-77M
 
 - Github: [Fengshenbang-LM](https://github.com/IDEA-CCNL/Fengshenbang-LM)
