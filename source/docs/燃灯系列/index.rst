@@ -16,3 +16,4 @@
     Randeng-T5-77M
     Randeng-T5-784M
     Randeng-Transformer-1.1B-Denoise
+    Randeng-DELLA-226M-Chinese
