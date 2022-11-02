@@ -9,6 +9,7 @@
 .. toctree::
    :maxdepth: 2
    
+   docs/任务对应模型/index
    docs/二郎神系列/index
    docs/闻仲系列/index
    docs/燃灯系列/index
