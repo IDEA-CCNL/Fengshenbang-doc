@@ -1,3 +1,8 @@
+---
+language: zh
+license: apache-2.0
+---
+
 # Randeng-TransformerXL-5B-Deduction-Chinese
 
 - Github: [Fengshenbang-LM](https://github.com/IDEA-CCNL/Fengshenbang-LM)
@@ -27,7 +32,7 @@ Chinese deductive reasoning model based on Transformer-XL.
 * Wudao Causal Corpus (with 2.3 million samples): Based on the Wudao corpus (280G version), sentence pairs with causality were obtained through logic indicator matching, manual annotation + [GTSFactory](https://gtsfactory.com/), and data cleaning.
 
 **训练流程 Model Training**
-1. 在悟道语料库（280G版本）和标注的相似句子对数据集上进行预训练（[Randeng-TransformerXL-1.1B-Paraphrasing-Chinese](https://huggingface.co/IDEA-CCNL/Randeng-TransformerXL-1.1B-Paraphrasing-Chinese)）
+1. 在悟道语料库（280G版本）上进行预训练
 2. 在1.5M因果语料上进行因果生成任务的训练
 3. 基于其余0.8M因果语料，协同[Randeng-TransformerXL-5B-Abduction-Chinese](https://huggingface.co/IDEA-CCNL/Randeng-TransformerXL-5B-Abduction-Chinese)和[Erlangshen-Roberta-330M-Causal-Chinese](https://huggingface.co/IDEA-CCNL/Erlangshen-Roberta-330M-Causal-Chinese)进行Self-consistent闭环迭代训练
     * 两个生成模型基于核采样和贪心的方式进行因果推理和反绎推理，产生大量伪样本；
@@ -37,10 +42,6 @@ First, the Transformer-XL model was pre-trained on the Wudao Corpus (with 280G s
 Then, the model was trained on our causal corpus (about 1.5 million samples) for the deductive reasoning task.
 At last, based on the remaining 0.8 million samples of the causal corpus, we conducted self-consistent learning on this model, cooperating with [Randeng-TransformerXL-5B-Abduction-Chinese](https://huggingface.co/IDEA-CCNL/Randeng-TransformerXL-5B-Abduction-Chinese) and [Erlangshen-Roberta-330M-Causal-Chinese](https://huggingface.co/IDEA-CCNL/Erlangshen-Roberta-330M-Causal-Chinese).
 Specifically, two generative models performed deductive reasoning and abductive reasoning based on each sample respectively, generating a large number of pseudo-samples; [Erlangshen-Roberta-330M-Causal-Chinese](https://huggingface.co/IDEA-CCNL/Erlangshen-Roberta-330M-Causal-Chinese) scored the causality of the pseudo-samples and selected the training data for itself and the generative models in the next iteration.
-
-## 模型下载地址 Download Address
-
-- Huggingface: [Randeng-TransformerXL-5B-Deduction-Chinese](https://huggingface.co/IDEA-CCNL/Randeng-TransformerXL-5B-Deduction-Chinese)
 
 ## 加载模型 Loading Models
 
@@ -52,6 +53,7 @@ cd Fengshenbang-LM
 ```python 
 from fengshen.models.transfo_xl_reasoning import TransfoXLModel
 from transformers import T5Tokenizer as TransfoXLTokenizer
+
 model = TransfoXLModel.from_pretrained('IDEA-CCNL/Randeng-TransformerXL-5B-Deduction-Chinese')
 tokenizer = TransfoXLTokenizer.from_pretrained(
     "IDEA-CCNL/Randeng-TransformerXL-5B-Deduction-Chinese",
@@ -66,11 +68,43 @@ tokenizer.add_special_tokens({'bos_token': '<bos>'})
 
 ```python 
 from fengshen.models.transfo_xl_reasoning import deduction_generate
+
 input_text = "机器人统治世界"
 input_texts = ["机器人统治世界", "玉米价格持续上涨"]
 print(deduction_generate(model, tokenizer, input_text, device=0))
 print(deduction_generate(model, tokenizer, input_texts, device=0))
 ```
+
+## 一些例子 Some Cases
+
+（以下内容为模型生成，不代表本单位观点）
+
+1. 鲸鱼是哺乳动物，哺乳动物是恒温动物
+    - 鲸鱼拥有极强的恒温能力
+    - 鲸鱼需要消耗大量的能量
+    - 鲸鱼能在海洋中生存下来，完全依靠其体温恒定
+2. 鲸鱼是哺乳动物，哺乳动物不是恒温动物
+    - 鲸鱼不是恒温动物，鲸鱼是变温动物
+    - 鲸鱼会随温度变化而变化
+    - 鲸鱼有冬眠现象
+3. 机器人统治世界
+    - 机器人取代人类做大部分工作
+    - 机器人世界的法律必须能够适用于机器人统治的现实世界
+    - 机器人必须能够相互沟通，并能够处理人类无法处理的复杂情况
+    - 未来将不再需要大量工人，机器人将接管工厂
+4. 玉米价格持续上涨
+    - 玉米淀粉价格也呈现上涨趋势
+    - 玉米种植效益不断攀升
+    - 在玉米深加工行业引起了一阵骚动
+5. 实体经济融资难、融资贵
+    - 急需发展互联网金融等金融业态，为实体经济提供融资服务
+    - 融资需求向金融资产转移，增加了金融资产供给
+    - 必须大力发展资本市场，使资本市场成为经济转型的助推器
+6. 影响华北地区的冷空气势力偏弱
+    - 冷空气的影响时间将偏短
+    - 冷空气影响结束后，华北地区气温会继续缓慢回升
+    - 华北地区气温较常年同期偏高
+
 
 ## 引用 Citation
 
