@@ -1,7 +1,7 @@
 # Randeng-Pegasus-523M-Chinese
 
-- Github: [Fengshenbang-LM](https://github.com/IDEA-CCNL/Fengshenbang-LM)
-- Docs: [Fengshenbang-Docs](https://fengshenbang-doc.readthedocs.io/)
+- Github: [Fengshenbang-LM](https://github.com/IDEA-CCNL/Fengshenbang-LM/blob/main/fengshen/examples/pegasus/pretrain_pegasus.sh)
+- Docs: [Fengshenbang-Docs](https://fengshenbang-doc.readthedocs.io/zh/latest/docs/%E7%87%83%E7%81%AF%E7%B3%BB%E5%88%97/Randeng-Pegasus-523M-Chinese.html#)
 
 ## 简介 Brief Introduction
 

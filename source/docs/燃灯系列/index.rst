@@ -19,3 +19,6 @@
     Randeng-DAVAE-1.2B-General-Chinese
     Randeng-GAVAE-1.2B-General-Chinese
     Randeng-PPVAE-1.2B-General-Chinese
+    Randeng-DELLA-226M-Chinese
+    Randeng-TransformerXL-5B-Deduction-Chinese
+    Randeng-TransformerXL-5B-Abduction-Chinese
