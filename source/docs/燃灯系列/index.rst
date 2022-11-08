@@ -16,3 +16,6 @@
     Randeng-T5-77M
     Randeng-T5-784M
     Randeng-Transformer-1.1B-Denoise
+    Randeng-DAVAE-1.2B-General-Chinese
+    Randeng-GAVAE-1.2B-General-Chinese
+    Randeng-PPVAE-1.2B-General-Chinese
