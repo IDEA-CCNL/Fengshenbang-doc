@@ -1,8 +1,3 @@
----
-language: zh
-license: apache-2.0
----
-
 # Randeng-TransformerXL-5B-Abduction-Chinese
 
 - Github: [Fengshenbang-LM](https://github.com/IDEA-CCNL/Fengshenbang-LM)
