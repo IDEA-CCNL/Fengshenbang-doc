@@ -17,3 +17,5 @@
     Randeng-T5-784M
     Randeng-Transformer-1.1B-Denoise
     Randeng-DELLA-226M-Chinese
+    Randeng-TransformerXL-5B-Deduction-Chinese
+    Randeng-TransformerXL-5B-Abduction-Chinese
