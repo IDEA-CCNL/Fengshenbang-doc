@@ -1,4 +1,4 @@
-## Randeng-PPVAE-1.2B-General-Chinese
+# Randeng-PPVAE-1.2B-General-Chinese
 
 - Github: [Fengshenbang-LM](https://github.com/IDEA-CCNL/Fengshenbang-LM/tree/main/fengshen/models/PPVAE)
 - Docs: [Fengshenbang-Docs](https://fengshenbang-doc.readthedocs.io/zh/latest/docs/%E7%87%83%E7%81%AF%E7%B3%BB%E5%88%97/Randeng-PPVAE-1.2B-General-Chinese.html)
