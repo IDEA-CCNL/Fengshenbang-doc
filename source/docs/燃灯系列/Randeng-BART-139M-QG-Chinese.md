@@ -1,30 +1,6 @@
----
-language:
-  - zh
-license: apache-2.0
-# inference: false
-
-# inference:
-#   parameters:
-tags:
-  - question-generation
-  - qg
-  - SQuAD
-  - nlg
-  - bart-base
-datasets:
-  - chinesesquad
-metrics:
-  - bleu
-  - rouge
-  - f1
-  - meteor
-  - bleu_score
----
-
 # Randeng-BART-139M-QG-Chinese
 
-- Github: [Fengshenbang-LM](https://github.com/IDEA-CCNL/Fengshenbang-LM/tree/dev_yangqi/fengshen/examples/bart_qg)
+- Github: [Fengshenbang-LM/finetune_bart_qg](https://github.com/IDEA-CCNL/Fengshenbang-LM/tree/main/fengshen/examples/finetune_bart_qg)
 - Docs: [Fengshenbang-Docs](https://fengshenbang-doc.readthedocs.io/)
 
 ## 简介 Brief Introduction
@@ -57,7 +33,6 @@ Based on [IDEA-CCNL/Randeng-BART-139M](https://huggingface.co/IDEA-CCNL/Randeng-
 from transformers import AutoTokenizer, BartForConditionalGeneration
 tokenizer = AutoTokenizer.from_pretrained("IDEA-CCNL/Randeng-BART-139M-QG-Chinese",additional_special_tokens=["<ans>"])
 model = BartForConditionalGeneration.from_pretrained("IDEA-CCNL/Randeng-BART-139M-QG-Chinese")
-
 context = "知识：1939年9月1日德国入侵波兰后，第二次世界大战开始，华沙一直被保卫到9月27日。波兰中部，包括华沙，都在德国纳粹殖民地政府总政府的统治下。所有的高等教育机构都立即关闭，华沙的犹太人口——几十万，约占城市的 <ans> ——全部涌入华沙的贫民区。回答：30%"
 inputs = tokenizer.encode_plus(
             context,
@@ -74,7 +49,8 @@ out = model.generate(
         max_length=64,
         top_p = 0.9,
     )
-print(pred = tokenizer.batch_decode(out,clean_up_tokenization_spaces=True, skip_special_tokens=True)[0])
+pred = tokenizer.batch_decode(out,clean_up_tokenization_spaces=True, skip_special_tokens=True)[0]
+print(pred)
 # 问题:华沙的犹太人口占城市的百分之多少?
 ```
 
@@ -86,19 +62,11 @@ print(pred = tokenizer.batch_decode(out,clean_up_tokenization_spaces=True, skip_
 If you are using the resource for your work, please cite the our [paper](https://arxiv.org/abs/2210.08590):
 
 ```text
-@article{unimc,
-  author    = {Ping Yang and
-               Junjie Wang and
-               Ruyi Gan and
-               Xinyu Zhu and
-               Lin Zhang and
-               Ziwei Wu and
-               Xinyu Gao and
-               Jiaxing Zhang and
-               Tetsuya Sakai},
-  title     = {Zero-Shot Learners for Natural Language Understanding via a Unified Multiple Choice Perspective},
+@article{fengshenbang,
+  author    = {Junjie Wang and Yuxiang Zhang and Lin Zhang and Ping Yang and Xinyu Gao and Ziwei Wu and Xiaoqun Dong and Junqing He and Jianheng Zhuo and Qi Yang and Yongfeng Huang and Xiayu Li and Yanghan Wu and Junyu Lu and Xinyu Zhu and Weifeng Chen and Ting Han and Kunhao Pan and Rui Wang and Hao Wang and Xiaojun Wu and Zhongshen Zeng and Chongpei Chen and Ruyi Gan and Jiaxing Zhang},
+  title     = {Fengshenbang 1.0: Being the Foundation of Chinese Cognitive Intelligence},
   journal   = {CoRR},
-  volume    = {abs/2210.08590},
+  volume    = {abs/2209.02970},
   year      = {2022}
 }
 ```
