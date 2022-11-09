@@ -1,4 +1,4 @@
-## Randeng-GAVAE-1.2B-General-Chinese
+# Randeng-GAVAE-1.2B-General-Chinese
 
 - Github: [Fengshenbang-LM](https://github.com/IDEA-CCNL/Fengshenbang-LM/tree/main/fengshen/models/GAVAE)
 - Docs: [Fengshenbang-Docs](https://fengshenbang-doc.readthedocs.io/zh/latest/docs/%E7%87%83%E7%81%AF%E7%B3%BB%E5%88%97/Randeng-GAVAE-1.2B-General-Chinese.html)
