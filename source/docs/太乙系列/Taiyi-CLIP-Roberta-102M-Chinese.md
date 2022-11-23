@@ -65,6 +65,8 @@ url = "http://images.cocodataset.org/val2017/000000039769.jpg"  # 这里可以�
 clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")  
 processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
 image = processor(images=Image.open(requests.get(url, stream=True).raw), return_tensors="pt")
+if image_data.mode != 'RGB':
+    image = image.convert('RGB')
 
 with torch.no_grad():
     image_features = clip_model.get_image_features(**image)
