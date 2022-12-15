@@ -15,7 +15,7 @@
    docs/太乙系列/index
    docs/余元系列/index
    docs/周文王系列/index
-   docs/任务对应模型/index
+   docs/场景应用/index
    docs/数据集列表/index
    docs/封神框架/index
    
