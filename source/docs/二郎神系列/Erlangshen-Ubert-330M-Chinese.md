@@ -49,10 +49,10 @@ Run the code
 
 ```python
 import argparse
-from fengshen import UbertPiplines
+from fengshen import UbertPipelines
 
 total_parser = argparse.ArgumentParser("TASK NAME")
-total_parser = UbertPiplines.piplines_args(total_parser)
+total_parser = UbertPipelines.pipelines_args(total_parser)
 args = total_parser.parse_args()
 
 args.pretrained_model_path = "IDEA-CCNL/Erlangshen-Ubert-330M-Chinese"
@@ -69,7 +69,7 @@ test_data=[
         "id": 0}
 ]
 
-model = UbertPiplines(args)
+model = UbertPipelines(args)
 result = model.predict(test_data)
 for line in result:
     print(line)
@@ -101,7 +101,7 @@ for line in result:
 
 ## 数据预处理示例
 
-整个模型的 Piplines 我们已经写好，所以为了方便，我们定义了数据格式。目前我们在预训练中主要含有一下几种任务类型
+整个模型的 Pipelines 我们已经写好，所以为了方便，我们定义了数据格式。目前我们在预训练中主要含有一下几种任务类型
 
 | task_type | subtask_type   |
 |:---------:|:--------------:|
